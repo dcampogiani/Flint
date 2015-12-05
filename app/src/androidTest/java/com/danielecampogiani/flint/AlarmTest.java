@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.equalTo;
 @SuppressWarnings("unchecked")
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class MainActivityTest {
+public class AlarmTest {
 
     @Rule
     public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule(MainActivity.class);
@@ -130,7 +130,6 @@ public class MainActivityTest {
     public void testRingtoneAlarm() throws Exception {
         AppCompatActivity activity = mActivityRule.getActivity();
         String ringtone = "Flint-Rulez";
-
         Flint.alarm(hour).ringtone(ringtone).start(activity);
         intended(allOf(
                 hasAction(equalTo(AlarmClock.ACTION_SET_ALARM)),
