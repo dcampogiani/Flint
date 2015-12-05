@@ -37,6 +37,17 @@ To do:
 ##Example
  
      Flint.alarm(hour).minutes(minutes).days(Calendar.MONDAY).silent().start(activity);
+     
+     instead of:
+     
+     Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
+     intent.putExtra(AlarmClock.EXTRA_HOUR, hour);
+     intent.putExtra(AlarmClock.EXTRA_MINUTES, minutes);
+     ArrayList<Intent> days = new ArrayList<>(1);
+     days.add(Calendar.MONDAY);
+     intent.putExtra(AlarmClock.EXTRA_DAYS, days);
+     intent.putExtra(AlarmClock.EXTRA_RINGTONE, AlarmClock.VALUE_RINGTONE_SILENT);
+     startActivity(intent);
 
 ##Documentation
 
