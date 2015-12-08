@@ -6,10 +6,10 @@ Android [common intents](http://developer.android.com/guide/components/intents-c
 
 Done:
  - Create an alarm
- 
-To do:
  - Create a timer
  - Swow all alarms
+ 
+To do:
  - Add a calendar event
  - Capture a picture or video
  - Start a camera app in still image mode
