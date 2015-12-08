@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.IntRange;
 
 import com.danielecampogiani.flintlib.request.AlarmRequest;
+import com.danielecampogiani.flintlib.request.ShowAlarmsRequest;
 import com.danielecampogiani.flintlib.request.TimerRequest;
 
 public class Flint {
@@ -17,5 +18,10 @@ public class Flint {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static TimerRequest timer() {
         return new TimerRequest();
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public static ShowAlarmsRequest showAlarms() {
+        return new ShowAlarmsRequest();
     }
 }
