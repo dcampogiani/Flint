@@ -8,9 +8,9 @@ Done:
  - Create an alarm
  - Create a timer
  - Swow all alarms
+ - Add a calendar event
  
 To do:
- - Add a calendar event
  - Capture a picture or video
  - Start a camera app in still image mode
  - Start a camera app in video mode
