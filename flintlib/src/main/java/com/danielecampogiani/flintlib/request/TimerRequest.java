@@ -3,7 +3,9 @@ package com.danielecampogiani.flintlib.request;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.provider.AlarmClock;
+import android.support.annotation.CheckResult;
 import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 
 public class TimerRequest extends BaseRequest {
 
@@ -13,6 +15,7 @@ public class TimerRequest extends BaseRequest {
     private int length = -1;
     private String message = null;
 
+    @CheckResult
     public TimerRequest length(@IntRange(from = 1, to = 86400) int length) {
         if (length < 1 || length > 86400)
             throw new IllegalArgumentException(Integer.toString(length));
@@ -20,9 +23,8 @@ public class TimerRequest extends BaseRequest {
         return this;
     }
 
-    public TimerRequest message(String message) {
-        if (message == null)
-            throw new NullPointerException("message");
+    @CheckResult
+    public TimerRequest message(@NonNull String message) {
         this.message = message;
         return this;
     }

@@ -6,7 +6,9 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.provider.AlarmClock;
+import android.support.annotation.CheckResult;
 import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +46,7 @@ public class AlarmRequest extends BaseRequest {
         this.hour = hour;
     }
 
+    @CheckResult
     public AlarmRequest minutes(@IntRange(from = 0, to = 59) int minutes) {
         if (minutes < 0 || minutes > 59)
             throw new IllegalArgumentException(Integer.toString(minutes));
@@ -52,7 +55,8 @@ public class AlarmRequest extends BaseRequest {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public AlarmRequest days(int firstDay, int... otherDays) {
+    @CheckResult
+    public AlarmRequest days(@IntRange(from = 1, to = 7) int firstDay, int... otherDays) {
         if (isDayValid(firstDay))
             this.days.add(firstDay);
         for (int otherDay : otherDays) {
@@ -63,28 +67,28 @@ public class AlarmRequest extends BaseRequest {
         return this;
     }
 
-    public AlarmRequest message(String message) {
-        if (message == null)
-            throw new NullPointerException("message");
+    @CheckResult
+    public AlarmRequest message(@NonNull String message) {
         this.message = message;
         return this;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
+    @CheckResult
     public AlarmRequest silent() {
         this.ringtone = AlarmClock.VALUE_RINGTONE_SILENT;
         return this;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public AlarmRequest ringtone(String mediaUri) {
-        if (mediaUri == null)
-            throw new NullPointerException("mediaUri");
+    @CheckResult
+    public AlarmRequest ringtone(@NonNull String mediaUri) {
         this.ringtone = mediaUri;
         return this;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
+    @CheckResult
     public AlarmRequest doNotVibrate() {
         this.vibrate = false;
         return this;

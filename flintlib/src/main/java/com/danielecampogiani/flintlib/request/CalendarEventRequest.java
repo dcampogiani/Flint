@@ -4,6 +4,8 @@ package com.danielecampogiani.flintlib.request;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.CalendarContract;
+import android.support.annotation.CheckResult;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class CalendarEventRequest extends BaseRequest {
     private String location;
     private String[] invitees;
 
+    @CheckResult
     public CalendarEventRequest allDay() {
         if (endMilliseconds != -1)
             throw new IllegalStateException("End time of the event already present");
@@ -28,6 +31,7 @@ public class CalendarEventRequest extends BaseRequest {
         return this;
     }
 
+    @CheckResult
     public CalendarEventRequest begin(long beginMilliseconds) {
         if (beginMilliseconds <= 0)
             throw new IllegalArgumentException("beginMilliseconds");
@@ -35,6 +39,7 @@ public class CalendarEventRequest extends BaseRequest {
         return this;
     }
 
+    @CheckResult
     public CalendarEventRequest end(long endMilliseconds) {
         if (endMilliseconds <= 0)
             throw new IllegalArgumentException("endMilliseconds");
@@ -48,31 +53,27 @@ public class CalendarEventRequest extends BaseRequest {
         return this;
     }
 
-    public CalendarEventRequest title(String title) {
-        if (title == null)
-            throw new NullPointerException("title");
+    @CheckResult
+    public CalendarEventRequest title(@NonNull String title) {
         this.title = title;
         return this;
     }
 
-    public CalendarEventRequest description(String description) {
-        if (description == null)
-            throw new NullPointerException("description");
+    @CheckResult
+    public CalendarEventRequest description(@NonNull String description) {
         this.description = description;
         return this;
     }
 
-    public CalendarEventRequest location(String location) {
-        if (location == null)
-            throw new NullPointerException("location");
+    @CheckResult
+    public CalendarEventRequest location(@NonNull String location) {
         this.location = location;
         return this;
     }
 
-    public CalendarEventRequest invitees(String firstInvitee, String... otherInvitees) {
+    @CheckResult
+    public CalendarEventRequest invitees(@NonNull String firstInvitee, String... otherInvitees) {
         ArrayList<String> inviteesList = new ArrayList<>(1);
-        if (firstInvitee == null)
-            throw new NullPointerException("firstInvitee");
         if (isValidEmailAddress(firstInvitee))
             inviteesList.add(firstInvitee);
         else throw new IllegalArgumentException(firstInvitee + " is not a valid email");
