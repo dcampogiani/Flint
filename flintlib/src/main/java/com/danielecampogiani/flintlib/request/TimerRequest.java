@@ -1,11 +1,13 @@
 package com.danielecampogiani.flintlib.request;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.provider.AlarmClock;
 import android.support.annotation.IntRange;
 
 public class TimerRequest extends BaseRequest {
 
+    @SuppressLint("InlinedApi")
     private static final String action = AlarmClock.ACTION_SET_TIMER;
 
     private int length = -1;
@@ -25,6 +27,7 @@ public class TimerRequest extends BaseRequest {
         return this;
     }
 
+    @SuppressLint("InlinedApi")
     @Override
     protected Intent packageIntent() {
         Intent intent = new Intent(action);

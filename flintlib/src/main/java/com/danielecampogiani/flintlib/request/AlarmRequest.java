@@ -1,6 +1,7 @@
 package com.danielecampogiani.flintlib.request;
 
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -93,6 +94,7 @@ public class AlarmRequest extends BaseRequest {
         return validDays.contains(dayToValidate);
     }
 
+    @SuppressLint("InlinedApi")
     @Override
     protected Intent packageIntent() {
         Intent intent = new Intent(action);
